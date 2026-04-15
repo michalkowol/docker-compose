@@ -29,7 +29,7 @@ processors:
   tail_sampling:
     decision_wait: 5s
     num_traces: 10000
-    expected_new_traces_per_sec: 10
+    expected_new_traces_per_sec: 1
     policies:
       [
         {
@@ -40,7 +40,7 @@ processors:
         {
           name: randomized-policy,
           type: probabilistic,
-          probabilistic: { sampling_percentage: 5 },
+          probabilistic: { sampling_percentage: 20 },
         },
       ]
 
