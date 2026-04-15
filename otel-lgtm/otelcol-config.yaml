@@ -28,7 +28,7 @@ processors:
     spike_limit_mib: 500
   tail_sampling:
     decision_wait: 5s
-    num_traces: 10000
+    num_traces: 30
     expected_new_traces_per_sec: 1
     policies:
       [
@@ -40,7 +40,7 @@ processors:
         {
           name: randomized-policy,
           type: probabilistic,
-          probabilistic: { sampling_percentage: 20 },
+          probabilistic: { sampling_percentage: 10 },
         },
       ]
 
