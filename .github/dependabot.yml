@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: "docker-compose"
+    directory: "/n8n"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/ollama"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/otel-collector"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/otel-lgtm"
+    schedule:
+      interval: "daily"
