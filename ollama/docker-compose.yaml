@@ -20,7 +20,7 @@ services:
       - dokploy-network
     command:
       - "-c"
-      - "sleep 30; ollama pull llama3.2:3b"
+      - "sleep 10; ollama pull llama3.2:3b"
 
 volumes:
   ollama_storage:
