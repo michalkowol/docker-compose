@@ -7,13 +7,7 @@ services:
     environment:
       PROMETHEUS_EXTRA_ARGS: "--storage.tsdb.retention.time=10d --storage.tsdb.retention.size=5GB"
       ENABLE_LOGS_ALL: false
-    networks:
-      - dokploy-network
     restart: unless-stopped
 
 volumes:
   lgtm-data:
-
-networks:
-  dokploy-network:
-    external: true

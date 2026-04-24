@@ -4,8 +4,6 @@ services:
     restart: unless-stopped
     volumes:
       - ollama_storage:/home/node/.ollama
-    networks:
-      - dokploy-network
 
   init-ollama:
     image: ollama/ollama:0.21.2
@@ -16,15 +14,9 @@ services:
     entrypoint: /bin/sh
     environment:
       - OLLAMA_HOST=ollama:11434
-    networks:
-      - dokploy-network
     command:
       - "-c"
       - "sleep 10; ollama pull llama3.2:3b; ollama pull qwen3.6:35b"
 
 volumes:
   ollama_storage:
-
-networks:
-  dokploy-network:
-    external: true
