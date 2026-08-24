@@ -21,7 +21,7 @@ processors:
   filter/health-checks:
     error_mode: ignore
     trace_conditions:
-      - name == "GET /actuator/health"
+      - span.name == "GET /actuator/health"
   batch:
     timeout: 5s
     send_batch_size: 5000
