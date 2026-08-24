@@ -20,10 +20,8 @@ extensions:
 processors:
   filter/health-checks:
     error_mode: ignore
-    traces:
-      span:
-        - 'name == "GET /actuator/health"'
-        - 'attributes["url.path"] == "/actuator/health"'
+    trace_conditions:
+      - name == "GET /actuator/health"
   batch:
     timeout: 5s
     send_batch_size: 5000
