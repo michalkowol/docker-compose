@@ -75,15 +75,15 @@ service:
     traces:
       receivers: [otlp]
       processors: [memory_limiter, filter/health-checks, tail_sampling, batch]
-      exporters: [otlp_http/traces]
+      exporters: [otlp_http/traces, debug]
     metrics:
       receivers: [otlp, prometheus/collector]
       processors: [memory_limiter, batch]
-      exporters: [otlp_http/metrics]
+      exporters: [otlp_http/metrics, debug]
     logs:
       receivers: [otlp]
       processors: [memory_limiter, batch]
-      exporters: [otlp_http/logs]
+      exporters: [otlp_http/logs, debug]
     profiles:
       receivers: [otlp]
-      exporters: [otlp/profiles]
+      exporters: [otlp/profiles, debug]
