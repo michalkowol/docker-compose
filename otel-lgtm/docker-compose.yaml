@@ -1,10 +1,6 @@
 services:
   lgtm:
     image: grafana/otel-lgtm:0.30.2
-    ports:
-      - "4317:4317"
-    networks:
-      - dokploy-network
     volumes:
       - lgtm-data:/data
       - ./otelcol-config.yaml:/otel-lgtm/otelcol-config.yaml:ro
@@ -15,7 +11,3 @@ services:
 
 volumes:
   lgtm-data:
-
-networks:
-  dokploy-network:
-    external: true
