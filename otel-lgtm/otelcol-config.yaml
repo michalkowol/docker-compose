@@ -22,7 +22,6 @@ processors:
     error_mode: ignore
     trace_conditions:
       - span.name == "GET /actuator/health"
-      - span.attributes["http.route"] == "/actuator/health"
   batch:
     timeout: 5s
     send_batch_size: 5000
