@@ -1,6 +1,6 @@
 services:
   lgtm:
-    image: grafana/otel-lgtm:0.30.2
+    image: grafana/otel-lgtm:0.31.0
     volumes:
       - lgtm-data:/data
       - ./otelcol-config.yaml:/otel-lgtm/otelcol-config.yaml:ro
