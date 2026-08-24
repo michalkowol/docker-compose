@@ -18,6 +18,11 @@ extensions:
     endpoint: 0.0.0.0:13133
 
 processors:
+  filter/health-checks:
+    error_mode: ignore
+    traces:
+      span:
+        - 'name == "GET /actuator/health"'
   batch:
     timeout: 5s
     send_batch_size: 5000
@@ -40,7 +45,7 @@ processors:
         {
           name: randomized-policy,
           type: probabilistic,
-          probabilistic: { sampling_percentage: 10 },
+          probabilistic: { sampling_percentage: 100 },
         },
       ]
 
@@ -69,7 +74,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [memory_limiter, tail_sampling, batch]
+      processors: [memory_limiter, filter/health-checks, tail_sampling, batch]
       exporters: [otlp_http/traces]
     metrics:
       receivers: [otlp, prometheus/collector]
