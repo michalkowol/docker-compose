@@ -22,6 +22,10 @@ Copy `.env.example` to `.env` and set your `NEW_RELIC_LICENSE_KEY` before starti
 
 [Laya](https://github.com/NandhaKishorM/laya) HTTP server for typed decisions (`choice`, `score`, `noul`) over text in 100+ languages, exposed as `POST /v1/systemone` on port `8000`. The CPU image is built from the upstream repository at a pinned tag and preloads the `english` and `multilingual` checkpoints before it starts serving. Requires `LAYA_API_KEY` (e.g. `openssl rand -hex 32`, set in the Dokploy Environment tab), sent by clients as `Authorization: Bearer <key>`. Connects to an external `dokploy-network`.
 
+### [phoenix](phoenix/)
+
+[Arize Phoenix](https://phoenix.arize.com/) for LLM tracing and evaluation. Receives OpenTelemetry traces via OTLP on ports `4317` (gRPC) and `6006` (HTTP, `/v1/traces`), and serves the UI on port `6006`. Traces are stored in SQLite in the `phoenix-data` volume. Authentication is enabled and requires `PHOENIX_SECRET` (at least 32 characters, e.g. `openssl rand -hex 32`, set in the Dokploy Environment tab). The first login is `admin@localhost` / `admin`; change the password right after. Clients send an API key created in the UI as `Authorization: Bearer <key>`. Connects to an external `dokploy-network`.
+
 ### [n8n](n8n/)
 
 [n8n](https://n8n.io/) workflow automation platform. Configured with Europe/Warsaw timezone and secure cookies.

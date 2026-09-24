@@ -1,0 +1,18 @@
+services:
+  phoenix:
+    image: arizephoenix/phoenix:version-20.3.0
+    restart: unless-stopped
+    environment:
+      - PHOENIX_ENABLE_AUTH=true
+      - PHOENIX_SECRET=${PHOENIX_SECRET:?}
+    volumes:
+      - phoenix-data:/root/.phoenix
+    networks:
+      - dokploy-network
+
+volumes:
+  phoenix-data:
+
+networks:
+  dokploy-network:
+    external: true
