@@ -18,6 +18,10 @@ Copy `.env.example` to `.env` and set your `NEW_RELIC_LICENSE_KEY` before starti
 
 [Ollama](https://ollama.com/) inference server for running large language models locally. Includes an init container that automatically pulls `llama3.2:3b`, `gemma4:e4b`, and `gemma3:4b` models on first start. Connects to an external `dokploy-network`.
 
+### [laya](laya/)
+
+[Laya](https://github.com/NandhaKishorM/laya) HTTP server for typed decisions (`choice`, `score`, `noul`) over text in 100+ languages, exposed as `POST /v1/systemone` on port `8000`. The CPU image is built from the upstream repository at a pinned tag and preloads the `english` and `multilingual` checkpoints before it starts serving. Requires `LAYA_API_KEY` (e.g. `openssl rand -hex 32`, set in the Dokploy Environment tab), sent by clients as `Authorization: Bearer <key>`. Connects to an external `dokploy-network`.
+
 ### [n8n](n8n/)
 
 [n8n](https://n8n.io/) workflow automation platform. Configured with Europe/Warsaw timezone and secure cookies.
