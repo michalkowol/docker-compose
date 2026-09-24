@@ -1,6 +1,6 @@
 services:
   phoenix:
-    image: arizephoenix/phoenix:version-20.3.0
+    image: arizephoenix/phoenix:version-20.14.0
     restart: unless-stopped
     environment:
       - PHOENIX_ENABLE_AUTH=true
