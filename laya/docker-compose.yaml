@@ -1,0 +1,27 @@
+services:
+  laya:
+    build:
+      context: https://github.com/NandhaKishorM/laya.git#v0.3.20
+    command: ["laya-serve"]
+    restart: unless-stopped
+    environment:
+      - LAYA_API_KEY=${LAYA_API_KEY:?}
+      - LAYA_MODELS=english,multilingual
+    volumes:
+      - laya_models:/home/laya/.cache/huggingface
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10m
+      start_interval: 2s
+    networks:
+      - dokploy-network
+
+volumes:
+  laya_models:
+
+networks:
+  dokploy-network:
+    external: true
