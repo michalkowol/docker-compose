@@ -19,3 +19,8 @@ updates:
     directory: "/otel-lgtm"
     schedule:
       interval: "daily"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/phoenix"
+    schedule:
+      interval: "daily"
